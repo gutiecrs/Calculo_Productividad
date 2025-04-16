@@ -1,0 +1,600 @@
+:root {
+    --primary: #00b7ff;
+    --success: #4CAF50;
+    --warning: #FF9800;
+    --danger: #be0000;
+    --background: #f0f3f5;
+    --text: #2c3e50;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#toggleBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+body {
+    font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+    background: var(--background);
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem;
+}
+
+.title-container.adidas-style {
+    position: relative;
+    padding: 2.5rem 1rem;
+    background: linear-gradient(145deg, #f9f9f9 0%, #ffffff 50%, #f5f5f5 100%);
+    border-radius: 16px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 0 12px rgba(255, 255, 255, 0.6),
+      inset 0 0 3px rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    border: none;
+    z-index: 1;
+    margin-bottom: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  /* Efecto de borde animado premium */
+  .title-container.adidas-style::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #000 20%,
+      #aaa 50%,
+      #000 80%,
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: borderFlow 2.5s linear infinite;
+  }
+  
+  /* Efecto de brillo sutil */
+  .title-container.adidas-style::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0) 55%
+    );
+    transform: rotate(30deg);
+    animation: shine 5s infinite;
+    z-index: 0;
+  }
+  
+  /* Animaciones */
+  @keyframes borderFlow {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  @keyframes shine {
+    0% { transform: rotate(30deg) translate(-30%, -30%); }
+    100% { transform: rotate(30deg) translate(30%, 30%); }
+  }
+  
+  /* Estilo para el texto y logo */
+  .title-container.adidas-style h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: #111;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0.8rem 1.5rem;
+    text-shadow: 
+      0 1px 0 rgba(255,255,255,0.8),
+      0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Logo mejorado */
+  .adidas-logo {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+  }
+  
+  /* Efecto hover para todo el contenedor */
+  .title-container.adidas-style:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.12),
+      inset 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+  
+  .title-container.adidas-style:hover .adidas-logo {
+    transform: scale(1.05) rotate(-5deg);
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+  }
+  
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .title-container.adidas-style {
+      padding: 1.8rem 0.8rem;
+    }
+    
+    .title-container.adidas-style h1 {
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+    }
+    
+    .adidas-logo {
+      height: 40px;
+    }
+  }
+  
+  /* Efecto de partículas sutiles (opcional) */
+  .title-container .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 0.5px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.8) 0.5px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+  }
+
+  .title-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #000, #888, #000);
+    animation: moveLine 3s infinite linear;
+  }
+  
+  @keyframes moveLine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+  }
+
+.title-container h1 {
+    font-size: 2.5rem;
+    color: var(--text);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .timer-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+input, select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(0, 183, 255, 0.2);
+    outline: none;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+button {
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background: var(--success);
+    color: white;
+}
+
+.btn-info {
+    background: #2196F3;
+    color: white;
+}
+
+.btn-secondary {
+    background: #607D8B;
+    color: white;
+}
+
+.btn-active {
+    background: var(--primary) !important;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+.btn-paused {
+    background-color: #03A9F4 !important; /* Celeste */
+    color: white !important;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); text-shadow: 0 0 0px red; }
+    50%  { transform: scale(1.05); text-shadow: 0 0 20px red; }
+    100% { transform: scale(1); text-shadow: 0 0 0px red; }
+  }
+  
+  .alert-effect {
+    background-color: #ff4444 !important;
+    color: white !important;
+    animation: pulse 1s infinite;
+  }
+  
+.btn-warning {
+    background: var(--warning);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.timer-container {
+    background: #1e2a38;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: background-color 0.4s ease;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+ .timer-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Antes tenías height: 170px */
+  }
+  
+  .timer-display {
+    font-size: 6rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+    text-align: center;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+.timer-overlay {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 25%, 
+        rgba(255,255,255,0.1) 50%, 
+        transparent 75%);
+    animation: shine 3s infinite;
+    z-index: 1;
+}
+
+.results-section {
+    margin-top: 2rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.session-card {
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--success);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.session-card:hover {
+    transform: translateX(10px);
+}
+
+.adidas-style {
+    background: white;
+    border-bottom: 4px solid #000;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .adidas-style h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2.4rem;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    color: #111;
+  }
+  
+  .adidas-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(2);
+    transition: transform 0.3s ease;
+  }
+  
+  .adidas-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .productividad-badge {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-weight: 600;
+    color: white;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+  
+  .badge-high {
+    background-color: limegreen;
+  }
+  
+  .badge-medium {
+    background-color: goldenrod;
+  }
+  
+  .badge-low {
+    background-color: crimson;
+  }
+
+  button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+  }
+  
+  button:active::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* Botón flotante */
+  #helpBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #111;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.6rem 0.9rem;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  #helpBtn:hover {
+    background: #333;
+  }
+  
+  /* Modal base */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(3px);
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background: rgba(255, 255, 255, 0.96);
+    margin: 8% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  /* Cierre */
+  .close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #111;
+  }
+  
+  /* Tabla de metas */
+  .modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .modal-content th, .modal-content td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+  }
+  
+  .modal-content th {
+    background: #f5f5f5;
+    font-weight: 600;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+  
+    .timer-panel {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* alinearlo arriba */
+        height: 100%;
+      }
+  
+      .timer-container {
+        background: #1e2a38;
+        padding: 6rem 4rem;
+        border-radius: 25px;
+        text-align: center;
+        transition: background-color 0.4s ease;
+        position: relative;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      }
+  
+    .timer-box {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .timer-display {
+            font-size: 7rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+            z-index: 2;
+            position: relative;
+          }
+  
+    .controls-panel {
+      gap: 0.6rem;
+    }
+  
+    .button-group {
+      grid-template-columns: 1fr;
+    }
+  
+    #toggleBtn {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  
+    .glass-container {
+      padding: 1rem;
+    }
+  }
+  
+  @keyframes pulse {
+    0%   { transform: scale(1); text-shadow: 0 0 0px red; }
+    50%  { transform: scale(1.05); text-shadow: 0 0 20px red; }
+    100% { transform: scale(1); text-shadow: 0 0 0px red; }
+  }
+
+  

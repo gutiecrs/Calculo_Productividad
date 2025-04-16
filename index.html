@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Productividad Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/Logo html.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glass-container">
+
+    <!-- Título y botón de ayuda 📊 -->
+    <div class="title-container adidas-style">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">
+          <img src="Images/Logo html.png" alt="Adidas Logo" class="adidas-logo">
+          CALCULADORA DE PRODUCTIVIDAD PRO
+        </h1>
+        <button id="helpBtn" title="Ver metas por tarea">📊</button>
+      </div>
+    </div>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <h2>🎯 Metas por Tarea</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Tarea</th>
+                <th>Meta (pzas/h)</th>
+                <th>Tiempo por unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>📦 Recepción APP</td><td>250</td><td>~14-15 seg</td></tr>
+              <tr><td>👔 Recepción FTW</td><td>180</td><td>~20 seg</td></tr>
+              <tr><td>🖥️ Recepción HDW</td><td>200</td><td>~18 seg</td></tr>
+              <tr><td>🚨 Alarmado y Perchado</td><td>160</td><td>~22.5 seg</td></tr>
+              <tr><td>👚 Planchado</td><td>100</td><td>~36 seg</td></tr>
+              <tr><td>🔁 Reposición</td><td>120</td><td>~30 seg</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    <!-- Contenido principal -->
+    <div class="main-grid">
+
+      <!-- Panel de controles -->
+      <div class="controls-panel">
+        <input type="text" id="workerName" placeholder="👤 Nombre del trabajador">
+        <select id="task">
+          <option value="Recepción APP">📦 Recepción APP</option>
+          <option value="Recepción FTW">👔 Recepción FTW</option>
+          <option value="Recepción HDW">🖥️ Recepción HDW</option>
+          <option value="Alarmado y Perchado">🚨 Alarmado y Perchado</option>
+          <option value="Planchado y estándares">👚 Planchado</option>
+          <option value="Reposición desde Stock">📦 Reposición</option>
+        </select>
+
+        <input type="number" id="pieces" placeholder="🔢 Piezas requeridas">
+        <input type="number" id="goal" placeholder="🎯 Meta por hora">
+
+        <div style="text-align: center; margin-bottom: 1rem;">
+          <button id="toggleBtn" class="btn-primary" onclick="toggleTimer()">▶ Iniciar</button>
+        </div>
+
+        <div class="button-group">
+          <button class="btn-info" onclick="calculate()">📅 Calcular Tiempo</button>
+          <button class="btn-warning" onclick="resetTimer()">⏹ Reiniciar</button>
+          <button class="btn-secondary" onclick="showHistory()">📜 Ver Historial</button>
+          <button class="btn-danger" onclick="clearHistory()">🗑️ Borrar Historial</button>
+          <button class="btn-success" onclick="exportToCSV()">📥 Exportar CSV</button>
+        </div>
+
+        <div class="results-section" id="result">
+          <h3>📊 Resultado Del Calculo</h3>
+          <div id="sessionDetails"></div>
+        </div>
+      </div>
+
+      <!-- Cronómetro y evaluación -->
+      <div class="timer-container">
+        <div class="timer-box">
+          <div class="timer-display" id="timer">00:00:00</div>
+        </div>
+
+        <div id="productivityEvaluation" style="display: none; margin-top: 2rem;">
+          <label for="actualPieces" style="color: white; font-weight: 500;">🛠️ Piezas completadas realmente:</label>
+          <input 
+            type="number" 
+            id="actualPieces" 
+            placeholder="Ej: 160" 
+            style="padding: 0.6rem; width: 100%; border-radius: 10px; margin-top: 0.5rem; border: none;">
+        
+          <button class="btn-info" style="margin-top: 1rem;" onclick="evaluarProductividad()">📊 Evaluar Productividad</button>
+        
+          <div id="evaluacionResultado" style="margin-top: 1rem; color: white;"></div>
+        </div>
+      </div>
+
+    </div> <!-- Fin main-grid -->
+  </div> <!-- Fin glass-container -->
+
+  <!-- Modal de ayuda -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>🎯 Metas por Tarea</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tarea</th>
+            <th>Meta (pzas/h)</th>
+            <th>Tiempo por unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>📦 Recepción APP</td><td>250</td><td>~14-15 seg</td></tr>
+          <tr><td>👔 Recepción FTW</td><td>180</td><td>~20 seg</td></tr>
+          <tr><td>🖥️ Recepción HDW</td><td>200</td><td>~18 seg</td></tr>
+          <tr><td>🚨 Alarmado y Perchado</td><td>160</td><td>~22.5 seg</td></tr>
+          <tr><td>👚 Planchado</td><td>100</td><td>~36 seg</td></tr>
+          <tr><td>🔁 Reposición</td><td>120</td><td>~30 seg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
